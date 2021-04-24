@@ -1,0 +1,58 @@
+{
+  "name": "backend-test",
+  "version": "1.0.0",
+  "private": true,
+  "repository": "git@github.com:shopbonsai/backend-test.git",
+  "author": "Some Bonsai Devs <developers@shopbonsai.ca>",
+  "main": "./dist/index.js",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "rimraf ./dist",
+    "lint": "npx eslint ./source --ext .ts --ext .tsx --config ./.eslintrc.js",
+    "start": "node dist/index.js",
+    "test": "jest --detectOpenHandles",
+    "watch": "npm run build && (tsc -w & nodemon)"
+  },
+  "dependencies": {
+    "@typegoose/typegoose": "7.4.1",
+    "axios": "0.20.0",
+    "body-parser": "^1.19.0",
+    "express": "4.17.1",
+    "http-status": "1.4.2",
+    "mongoose": "5.10.8",
+    "uuid": "^8.3.1"
+  },
+  "devDependencies": {
+    "@types/express": "4.17.8",
+    "@types/jest": "26.0.14",
+    "@types/mongoose": "5.7.4",
+    "@types/node": "12.0.0",
+    "@types/uuid": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "3.6.0",
+    "@typescript-eslint/parser": "3.6.0",
+    "eslint": "7.4.0",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-array-plural": "1.2.0",
+    "eslint-plugin-flowtype": "5.2.0",
+    "eslint-plugin-fp": "2.3.0",
+    "eslint-plugin-import": "2.22.0",
+    "eslint-plugin-import-helpers": "1.0.2",
+    "eslint-plugin-jsdoc": "28.6.1",
+    "eslint-plugin-jsx-a11y": "6.3.1",
+    "eslint-plugin-prettier": "3.1.4",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-sonarjs": "0.5.0",
+    "eslint-plugin-unicorn": "20.1.0",
+    "jest": "26.4.2",
+    "mongodb-memory-server": "6.9.2",
+    "nodemon": "2.0.4",
+    "prettier": "2.1.2",
+    "rimraf": "3.0.2",
+    "ts-jest": "26.4.1",
+    "ts-node": "9.0.0",
+    "typescript": "3.9.2"
+  }
+}
