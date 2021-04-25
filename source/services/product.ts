@@ -3,6 +3,7 @@ import axios from 'axios';
 import { STORE_URL } from '../constants';
 import { InputModel } from '../interfaces';
 import { dBProduct, Product } from '../models/product';
+import { errors } from "../errors";
 
 /**
  * Creates new product into our database.
@@ -23,6 +24,18 @@ export const fetchProducts = async (): Promise<IProduct[]> => {
  * Returns all existing products from our database.
  */
 export const getProducts = async (): Promise<Product[]> => await dBProduct.find();
+
+
+/**
+ * Returns one product from the database with a query.
+ */
+export const getOneProduct = async (query): Promise<Product> => {
+    const product = await dBProduct.findOne(query);
+
+    if (!product) throw errors.RESOURCE_NOT_FOUND
+
+    return product
+}
 
 /**
  * Synchronizes products from the external store into our database.

@@ -22,3 +22,10 @@ export const closeDbConnection = (): Promise<void> => {
   }
   throw new Error('Trying to close a DB connection that is not open');
 };
+
+/**
+ *  Drops database data.
+ */
+export const dropDbData = async (): Promise<void> => {
+  await mongoose.connection.dropDatabase()
+}

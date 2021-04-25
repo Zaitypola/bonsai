@@ -1,6 +1,6 @@
 import { MongoMemoryServer } from 'mongodb-memory-server';
 
-import { openDbConnection, closeDbConnection } from '../../source/utils/db';
+import { openDbConnection, closeDbConnection, dropDbData } from '../../source/utils/db';
 
 const mongod = new MongoMemoryServer();
 
@@ -20,10 +20,16 @@ export const teardownDB = async (): Promise<void> => {
   await mongod.stop();
 };
 
+export const dropDB = async (): Promise<void> => {
+  await dropDbData();
+}
+
 /**
  * Initializes when running tests with hooks.
  */
 export const initDb = (): void => {
   beforeAll(setupDB);
   afterAll(teardownDB);
+  beforeEach(dropDB);
+  afterEach(dropDB);
 };
