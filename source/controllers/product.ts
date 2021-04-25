@@ -3,9 +3,16 @@ import httpStatus from 'http-status';
 
 import * as productService from '../services/product';
 
-export const getProducts = async (_req: Request, res: Response): Promise<void> => {
-  const products = await productService.getProducts();
-  res.status(httpStatus.OK).json(products);
+export const getProducts = async (req: Request, res: Response): Promise<void> => {
+  const query = req.query;
+
+  try {
+    const products = await productService.getProducts(query);
+    res.status(httpStatus.OK).json(products);
+  } catch (error) {
+    console.log(`Error fetching products`, error)
+    res.status(error.statusCode).json(error)
+  }
 };
 
 export const syncProducts = (_req: Request, res: Response): void => {

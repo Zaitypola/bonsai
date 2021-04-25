@@ -23,7 +23,13 @@ export const fetchProducts = async (): Promise<IProduct[]> => {
 /**
  * Returns all existing products from our database.
  */
-export const getProducts = async (): Promise<Product[]> => await dBProduct.find();
+export const getProducts = async (query = {}): Promise<Product[]> => {
+  const products = await dBProduct.find(query);
+
+  if (products.length < 1) throw errors.RESOURCE_NOT_FOUND
+
+  return products
+}
 
 
 /**

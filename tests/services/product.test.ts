@@ -44,6 +44,51 @@ describe('Product services', () => {
         }
     })
 
+    it('Gets all products - filter by category', async () => {
+        try {
+            await Promise.all([
+                createProduct({
+                publicId: '1',
+                title: 'Initial product',
+                price: 9.99,
+                description: 'First product ever inserted',
+                category: 'A',
+                }),
+                createProduct({
+                publicId: '1',
+                title: 'Initial product',
+                price: 9.99,
+                description: 'First product ever inserted',
+                category: 'A',
+                }),
+                createProduct({
+                publicId: '1',
+                title: 'Initial product',
+                price: 9.99,
+                description: 'First product ever inserted',
+                category: 'B',
+                }),
+                createProduct({
+                publicId: '1',
+                title: 'Initial product',
+                price: 9.99,
+                description: 'First product ever inserted',
+                category: 'C',
+                })
+            ])
+
+            const query = {
+                category: 'A'
+            }
+
+            const foundProducts = await getProducts(query)
+
+            expect(foundProducts.length).toEqual(2)
+        } catch (error) {
+            expect(error).toBeNull()
+        }
+    })
+
     it('Creates product', async () => {
         try {
             const createdProduct = await createProduct({
