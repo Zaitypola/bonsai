@@ -22,7 +22,7 @@ export const teardownDB = async (): Promise<void> => {
 
 export const dropDB = async (): Promise<void> => {
   await dropDbData();
-}
+};
 
 /**
  * Initializes when running tests with hooks.

@@ -24,8 +24,8 @@ export const closeDbConnection = (): Promise<void> => {
 };
 
 /**
- *  Drops database data.
+ * Drops database data.
  */
 export const dropDbData = async (): Promise<void> => {
-  await mongoose.connection.dropDatabase()
-}
+  await mongoose.connection.dropDatabase();
+};

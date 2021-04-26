@@ -1,11 +1,11 @@
-import * as nock from "nock";
+import * as nock from 'nock';
 
 export const nockHooks = () => {
-    beforeEach(() => {
-        nock.cleanAll()
-    })
+  beforeEach(() => {
+    nock.cleanAll();
+  });
 
-    afterEach(() => {
-        nock.cleanAll()
-    })
-}
+  afterEach(() => {
+    nock.cleanAll();
+  });
+};

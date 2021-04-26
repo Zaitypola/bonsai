@@ -1,5 +1,4 @@
-import {PORT} from "./constants";
-import {startService} from "./http_service";
+import { PORT } from './constants';
+import { startService } from './http_service';
 
-
-startService(PORT)
+startService(PORT);

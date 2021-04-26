@@ -9,7 +9,7 @@
     "dist/**/*"
   ],
   "scripts": {
-    "build": "npm run clean && tsc",
+    "build": "npm run lint & clean & tsc",
     "clean": "rimraf ./dist",
     "lint": "npx eslint ./source --ext .ts --ext .tsx --config ./.eslintrc.js",
     "start": "node dist/index.js",
