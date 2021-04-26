@@ -4,9 +4,11 @@ import * as uuid from 'uuid';
 export class User {
   @prop({ default: uuid.v4 })
   _id: string;
-
+  /**
+   * Refactored publicId to be number to match the API store and to use the $mod operator.
+   */
   @prop({ required: true })
-  publicId!: string; // Fake Store API identifier used for matching products.
+  publicId!: number; // Fake Store API identifier used for matching users.
 
   @prop({ required: true })
   email!: string;
