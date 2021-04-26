@@ -3,7 +3,6 @@
     "module": "commonjs",
     "target": "ES2019",
     "moduleResolution": "node",
-    "rootDir": "./source",
     "outDir": "dist",
     "baseUrl": "./",
     "lib": ["esnext", "esnext.asynciterable"],
