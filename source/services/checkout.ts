@@ -13,6 +13,12 @@ export const checkout = async (values: ICreateCart): Promise<ICart> => {
   return await checkoutCall(values)
 };
 
+/**
+ * Calls the API checkout service.
+ * Throws exception if the call fails.
+ * @param {ICreateCart} values
+ * @returns {Promise<ICart>}
+ */
 export const checkoutCall = async (values: ICreateCart): Promise<ICart> => {
   try {
     const { data } = await axios.post(`${STORE_URL}/carts`, values);
@@ -23,6 +29,15 @@ export const checkoutCall = async (values: ICreateCart): Promise<ICart> => {
   }
 }
 
+/**
+ * Validates product provided in the cart to checkout.
+ * Requirements of how this service should fail are not specified.
+ *
+ * The function tries to find all products in the cart in the local db.
+ * All that are missing are returned as an error.
+ ** @param {ICartProduct[]} cartProducts
+ * @returns {Promise<void>}
+ */
 export const validateProducts = async (cartProducts: ICartProduct[]): Promise<void> => {
   const missingProducts: IMissingProduct[] = []
 
@@ -39,20 +54,26 @@ export const validateProducts = async (cartProducts: ICartProduct[]): Promise<vo
     }
 }
 
+/**
+ * Interface of products to validate.
+ */
 export interface ICartProduct {
   productId: number;
   quantity: number;
 }
 
+/**
+ * Interface to create a cart.
+ */
 export interface ICreateCart {
   userId: number;
   date: Date;
-  products: {
-    productId: number;
-    quantity: number;
-  }[];
+  products: ICartProduct[];
 }
 
+/**
+ * Interface of cart that was returned by API.
+ */
 export interface ICart extends ICreateCart {
   id: number;
 }
