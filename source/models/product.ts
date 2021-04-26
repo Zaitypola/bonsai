@@ -5,7 +5,7 @@ export class Product {
   @prop({ default: uuid.v4 })
   _id: string;
 
-  @prop({ required: true })
+  @prop({ required: true, unique: true, index: true })
   publicId!: string;
 
   @prop({ required: true })

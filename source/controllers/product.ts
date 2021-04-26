@@ -15,9 +15,13 @@ export const getProducts = async (req: Request, res: Response): Promise<void> =>
   }
 };
 
-export const syncProducts = (_req: Request, res: Response): void => {
-  productService.syncProducts();
-  res.sendStatus(httpStatus.OK);
+export const syncProducts = async (_req: Request, res: Response): Promise<void> => {
+  try {
+      await productService.syncProducts();
+      res.sendStatus(httpStatus.OK);
+  } catch (error) {
+      res.status(error.statusCode).json(error)
+  }
 };
 
 export const getProductByPublicId = async (req: Request, res: Response): Promise<void> => {

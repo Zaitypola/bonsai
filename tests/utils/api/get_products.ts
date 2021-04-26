@@ -1,11 +1,11 @@
 import axios from 'axios';
-import {PORT} from "../../../source/constants";
+import { PORT } from "../../../source/constants";
 
-export const getProductsService = async (query = {}) => {
+export const getProductsService = async (query = {}, headers = {}) => {
     let response
 
     try {
-        response = await axios.get(`http://localhost:${PORT}/products`, { params: query });
+        response = await axios.get(`http://localhost:${PORT}/products`, { params: query, headers });
     } catch (error) {
         response = error.response
     }
