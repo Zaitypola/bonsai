@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {FilterQuery} from "mongodb";
 
 import { STORE_URL } from '../constants';
 import { errors } from '../errors';
@@ -28,7 +29,7 @@ export const createUser = async (user: InputModel<User>): Promise<User> =>
  * @param query - Query to find one user.
  * @returns {Promise<User>} - Returns user found. Throws exception if user not found.
  */
-export const findOneUser = async (query: Record<string, unknown>): Promise<User> => {
+export const findOneUser = async (query: FilterQuery<User>): Promise<User> => {
   const user = await dbUser.findOne(query);
 
   if (!user) {

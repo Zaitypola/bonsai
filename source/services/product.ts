@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {FilterQuery} from "mongodb";
 
 import { STORE_URL } from '../constants';
 import { errors } from '../errors';
@@ -47,7 +48,7 @@ export const getProducts = async (query = {}): Promise<Product[]> => {
 /**
  * Returns one product from the database with a query.
  */
-export const getOneProduct = async (query: Record<string, unknown>): Promise<Product> => {
+export const getOneProduct = async (query: FilterQuery<Product>): Promise<Product> => {
   const product = await dBProduct.findOne(query);
 
   if (!product) {
