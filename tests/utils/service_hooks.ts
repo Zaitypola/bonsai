@@ -4,7 +4,7 @@ import {dropDB} from "./db";
 
 export const serviceHooks = (): void => {
     beforeAll(async () => {
-     await startService(PORT);
+        await startService(PORT);
     })
     afterAll(stopService);
     beforeEach(dropDB);

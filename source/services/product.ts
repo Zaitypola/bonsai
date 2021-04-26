@@ -74,6 +74,10 @@ export const updateProducts = async (products: IProduct[]) => {
     ))
 }
 
+export interface IMissingProduct {
+    productId: number
+}
+
 export interface IProduct {
   id: number;
   title: string;

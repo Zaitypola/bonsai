@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { STORE_URL } from '../constants';
-import {getOneProduct} from "./product";
+import {getOneProduct, IMissingProduct} from "./product";
 import {errors} from "../errors";
 
 /**
@@ -24,7 +24,7 @@ export const checkoutCall = async (values: ICreateCart): Promise<ICart> => {
 }
 
 export const validateProducts = async (cartProducts: ICartProduct[]): Promise<void> => {
-  const missingProducts: any[] = []
+  const missingProducts: IMissingProduct[] = []
 
   await Promise.all(cartProducts.map(async cartProduct => {
     try {

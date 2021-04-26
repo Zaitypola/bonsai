@@ -3,9 +3,11 @@ import {initDb} from "../utils/db";
 import {getCheckoutStoreProductsMock} from "../utils/mocks/checkout_store_products_mock";
 import {checkout, checkoutCall, validateProducts} from "../../source/services/checkout"
 import {errors} from "../../source/errors"
+import {nockHooks} from "../utils/nock_hooks";
 
 describe('Tests checkout services', () => {
     initDb();
+    nockHooks();
 
     it('Tests store checkout call - api call works', async () => {
         const cart = {
@@ -150,7 +152,7 @@ describe('Tests checkout services', () => {
         try {
             await validateProducts(cartProducts)
         } catch (error) {
-            expect(error).toMatchObject(errors.CHECKOUT_MISSING_PRODUCTS(missingProducts))
+            expect(error.message).toEqual(errors.CHECKOUT_MISSING_PRODUCTS(missingProducts).message)
         }
     })
 

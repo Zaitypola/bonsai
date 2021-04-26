@@ -9,9 +9,11 @@ import {initDb} from "../utils/db";
 import {createTestProducts} from '../utils/create_test_products';
 import {getStoreProductsNock} from "../utils/mocks/get_store_products_mock";
 import {errors} from "../../source/errors";
+import {nockHooks} from "../utils/nock_hooks";
 
 describe('Product services', () => {
     initDb();
+    nockHooks();
 
     it('Gets one product', async () => {
         try {

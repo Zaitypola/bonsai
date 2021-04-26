@@ -4,12 +4,14 @@ import { getProductService } from "../utils/api/get_product";
 import { getProductsService } from "../utils/api/get_products";
 import { syncProductsService } from "../utils/api/sync_products";
 import { getStoreProductsNock } from "../utils/mocks/get_store_products_mock";
+import {nockHooks} from "../utils/nock_hooks";
 import { serviceHooks } from "../utils/service_hooks";
 import { errors } from "../../source/errors";
 
 
 describe('Tests the product services', () => {
     serviceHooks();
+    nockHooks();
 
     it('Tests get one product service', async () => {
         const createdProduct = await createOrUpdateProduct({

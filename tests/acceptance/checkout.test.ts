@@ -1,12 +1,14 @@
 import {createOrUpdateProduct} from "../../source/services/product";
 import {checkout} from "../utils/api/checkout";
 import {getCheckoutStoreProductsMock} from "../utils/mocks/checkout_store_products_mock";
+import {nockHooks} from "../utils/nock_hooks";
 import {serviceHooks} from "../utils/service_hooks";
 import {errors} from "../../source/errors"
 
 
 describe('Tests checkout feature', () => {
     serviceHooks();
+    nockHooks();
 
     it('Tests checkout feature - all products are found - external call works', async () => {
         const cart = {
