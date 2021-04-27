@@ -100,7 +100,7 @@ In the tests they are mocked so that external issues in other platforms don't af
 
 ##### Product checks when performing checkout
 - A verify json body middleware has been added to verify the cart contents. The exercise mentions `add extra checks` so I considered a good one to add, specially when it's a `POST` service. The middleware returns `400 - BAD REQUEST` if it doesn't contain the required data to call the external checkout service.
-- A `validateProducts` service has been added before checkout. This service will fetch the products in our db by the `publicId` provided in the `POST call. This service will fail when it finds a product that is not found. The requirements on how to fail are not specified. I decided to return a list of the missing products to the client.
+- A `validateProducts` service has been added before checkout. This service will fetch the products in our db by the `publicId` provided in the `POST` call. This service will fail when it finds a product that is not found. The requirements on how to fail are not specified. I decided to return a list of the missing products to the client.
 - Products are upserted now. The `create` service is now `createOrUpdate` and based on the `publicId` provided (made unique and indexed now), we create the products if they don't exist and update them if they do.
 - The `image` field was missing from the product update operation, it's been added.
 
